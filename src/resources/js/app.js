@@ -5,6 +5,10 @@ import { createInertiaApp, Head, Link } from '@inertiajs/vue3'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import Layout from "./Layouts/Layout.vue";
 
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import vuetify from './plugins/vuetify'
+import '@mdi/font/css/materialdesignicons.css'
+
 
 
 createInertiaApp({
@@ -19,6 +23,7 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .use(vuetify)
             .component('Head', Head) // Чтобы не импортировать
             .component('Link', Link) // Чтобы не импортировать
             .mount(el)
