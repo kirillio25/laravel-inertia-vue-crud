@@ -95,6 +95,24 @@ onMounted(() => {
     <main class="container py-4">
         <slot />
     </main>
+
+
+    <!-- 🔹 Подвал -->
+    <footer class="bg-gradient-custom text-white py-4 mt-5 shadow-sm">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-moon-stars-fill text-warning"></i>
+                <span class="fw-semibold">AuroraApp</span>
+                <small class="text-white-50">© 2025 Все права защищены</small>
+            </div>
+
+            <div class="d-flex gap-3">
+                <Link href="#" class="text-white text-decoration-none hover-opacity">Политика</Link>
+                <Link href="#" class="text-white text-decoration-none hover-opacity">Контакты</Link>
+                <Link href="#" class="text-white text-decoration-none hover-opacity">Помощь</Link>
+            </div>
+        </div>
+    </footer>
 </template>
 
 <style scoped>
@@ -127,4 +145,11 @@ onMounted(() => {
 .dropdown-item:hover {
     background-color: #f8f9fa;
 }
+
+/* 🔹 Эффект при наведении на ссылки футера */
+.hover-opacity:hover {
+    opacity: 0.8;
+}
+
+
 </style>
