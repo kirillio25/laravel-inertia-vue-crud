@@ -48,9 +48,9 @@ onMounted(() => {
                     </li>
                     <li class="nav-item">
                         <Link
-                            :href="route('about')"
+                            :href="route('posts.index')"
                             class="nav-link fw-semibold text-white rounded-pill px-3 hover-nav"
-                        >💡 О проекте</Link>
+                        >💡 Посты</Link>
                     </li>
 
                     <!-- Пользователь -->
@@ -95,7 +95,6 @@ onMounted(() => {
     <main class="container py-4">
         <slot />
     </main>
-
 
     <!-- 🔹 Подвал -->
     <footer class="bg-gradient-custom text-white py-4 mt-5 shadow-sm">
@@ -150,6 +149,4 @@ onMounted(() => {
 .hover-opacity:hover {
     opacity: 0.8;
 }
-
-
 </style>
