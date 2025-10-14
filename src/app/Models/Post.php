@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Post extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
 
     public function category(): BelongsTo
     {
