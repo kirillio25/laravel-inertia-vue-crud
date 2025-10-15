@@ -1,8 +1,7 @@
 <template>
     <div class="container py-5">
-        <h4>Редактировать пост</h4>
+        <h4>Создать пост</h4>
 
-        <!-- Заголовок -->
         <v-text-field
             label="Заголовок"
             v-model="title"
@@ -11,7 +10,6 @@
             required
         />
 
-        <!-- Описание -->
         <v-textarea
             label="Описание"
             v-model="description"
@@ -20,7 +18,6 @@
             required
         />
 
-        <!-- Категория -->
         <v-select
             label="Категория"
             :items="categories"
@@ -33,7 +30,7 @@
         />
 
         <div class="mt-3 d-flex gap-2">
-            <v-btn color="primary" @click="update">Сохранить</v-btn>
+            <v-btn color="primary" @click="submit">Опубликовать</v-btn>
             <v-btn text @click="cancel">Отмена</v-btn>
         </div>
     </div>
@@ -43,18 +40,25 @@
 import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
 
-// Определяем переменные из контроллера
 const props = defineProps({
-    post: Object,
-    categories: Array,
+    post: {
+        type: Object,
+        default: () => ({
+            title: '',
+            description: '',
+            category_id: null
+        })
+    },
+    categories: {
+        type: Array,
+        default: () => []
+    }
 })
 
-// Подставляем текущие значения поста
 const title = ref(props.post.title)
 const description = ref(props.post.description)
 const category_id = ref(props.post.category_id)
 
-// Ошибки валидации
 const errors = ref({ title: null, description: null, category_id: null })
 
 const clearError = (field) => { errors.value[field] = null }
@@ -68,17 +72,16 @@ const validate = () => {
     return valid
 }
 
-// Обновление поста
-const update = () => {
+// Отправка
+const submit = () => {
     if (!validate()) return
 
-    router.put(`/posts/${props.post.id}`, {
+    router.post('/posts', {
         title: title.value,
         description: description.value,
         category_id: category_id.value
     })
 }
 
-// Отмена
 const cancel = () => router.get('/posts')
 </script>
